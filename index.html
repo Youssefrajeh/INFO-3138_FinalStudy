@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INFO3138 Study Quiz - Programming with Declarative Languages</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1><i class="fas fa-code"></i> INFO3138 Study Quiz</h1>
+        <p>
+          Programming with Declarative Languages - XML, DOM, XPath, and
+          Namespaces
+        </p>
+      </header>
+
+      <div class="quiz-container" id="quizContainer">
+        <div class="welcome-screen" id="welcomeScreen">
+          <div class="welcome-content">
+            <h2>Welcome to Your Study Quiz!</h2>
+            <p>Choose a topic to start practicing:</p>
+
+            <div class="topic-grid">
+              <div class="topic-card" data-topic="dom">
+                <i class="fas fa-sitemap"></i>
+                <h3>DOM Interfaces</h3>
+                <p>XML DOM, Node interfaces, and .NET implementations</p>
+              </div>
+              <div class="topic-card" data-topic="namespaces">
+                <i class="fas fa-tags"></i>
+                <h3>XML Namespaces</h3>
+                <p>Default namespaces, prefixes, and namespace declarations</p>
+              </div>
+              <div class="topic-card" data-topic="xpath">
+                <i class="fas fa-search"></i>
+                <h3>XPath Expressions</h3>
+                <p>Node selection, attributes, and path expressions</p>
+              </div>
+              <div class="topic-card" data-topic="mixed">
+                <i class="fas fa-random"></i>
+                <h3>Mixed Topics</h3>
+                <p>Random questions from all topics</p>
+              </div>
+            </div>
+
+            <div class="quiz-options">
+              <label for="questionCount">Number of Questions:</label>
+              <select id="questionCount">
+                <option value="5">5 Questions</option>
+                <option value="10" selected>10 Questions</option>
+                <option value="15">15 Questions</option>
+                <option value="20">20 Questions</option>
+              </select>
+            </div>
+
+            <button class="start-btn" id="startBtn">Start Quiz</button>
+          </div>
+        </div>
+
+        <div class="quiz-screen hidden" id="quizScreen">
+          <div class="quiz-header">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="quiz-info">
+              <span class="question-counter" id="questionCounter"
+                >Question 1 of 10</span
+              >
+              <span class="score" id="score">Score: 0</span>
+            </div>
+          </div>
+
+          <div class="question-container" id="questionContainer"></div>
+
+          <div class="quiz-controls">
+            <button class="btn btn-secondary" id="prevBtn" disabled>
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button class="btn btn-danger" id="exitBtn">
+              <i class="fas fa-times"></i> Exit Quiz
+            </button>
+            <button class="btn btn-primary" id="nextBtn">
+              Next <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-success hidden" id="finishBtn">
+              <i class="fas fa-check"></i> Finish Quiz
+            </button>
+          </div>
+        </div>
+
+        <div class="results-screen hidden" id="resultsScreen">
+          <div class="results-content">
+            <h2>Quiz Results</h2>
+            <div class="results-summary">
+              <div class="result-item">
+                <span class="result-label">Score:</span>
+                <span class="result-value" id="finalScore">0/10</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">Percentage:</span>
+                <span class="result-value" id="percentage">0%</span>
+              </div>
+              <div class="result-item">
+                <span class="result-label">Grade:</span>
+                <span class="result-value" id="grade">F</span>
+              </div>
+            </div>
+
+            <div class="review-section">
+              <h3>Question Review</h3>
+              <div class="review-list" id="reviewList">
+                <!-- Review items will be inserted here -->
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <button class="btn btn-primary" id="retakeBtn">
+                <i class="fas fa-redo"></i> Retake Quiz
+              </button>
+              <button class="btn btn-secondary" id="homeBtn">
+                <i class="fas fa-home"></i> Back to Home
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="quiz-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
