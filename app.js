@@ -188,7 +188,29 @@ class QuizApp {
                 </div>
             `;
         });
-        questionHTML += '</div></div>';
+        questionHTML += '</div>';
+        
+        // Add hint section if answered
+        if (this.userAnswers[this.currentQuestionIndex] !== null) {
+            const isCorrect = this.userAnswers[this.currentQuestionIndex] === question.correct;
+            const correctAnswer = question.options[question.correct];
+            
+            questionHTML += `
+                <div class="hint-section ${isCorrect ? 'correct' : 'incorrect'}">
+                    <div class="hint-header">
+                        <i class="fas ${isCorrect ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                        <span>${isCorrect ? 'Correct!' : 'Incorrect'}</span>
+                    </div>
+                    <div class="hint-content">
+                        <p><strong>Correct Answer:</strong> ${this.escapeHtml(correctAnswer)}</p>
+                        ${question.explanation ? `<p><strong>Explanation:</strong> ${this.escapeHtml(question.explanation)}</p>` : ''}
+                        <p class="hint-note"><i class="fas fa-info-circle"></i> You can change your answer by clicking on a different option.</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        questionHTML += '</div>';
         
         this.questionContainer.innerHTML = questionHTML;
         
@@ -208,20 +230,26 @@ class QuizApp {
     }
 
     selectOption(optionIndex) {
-        // Only allow selection if not already answered
-        if (this.userAnswers[this.currentQuestionIndex] !== null) {
-            return;
+        const question = this.currentQuestions[this.currentQuestionIndex];
+        const previousAnswer = this.userAnswers[this.currentQuestionIndex];
+        
+        // If changing answer, update score accordingly
+        if (previousAnswer !== null) {
+            // Remove previous answer's score
+            if (previousAnswer === question.correct) {
+                this.score--;
+            }
         }
         
+        // Set new answer
         this.userAnswers[this.currentQuestionIndex] = optionIndex;
         
-        // Check if answer is correct
-        const question = this.currentQuestions[this.currentQuestionIndex];
+        // Add new answer's score
         if (optionIndex === question.correct) {
             this.score++;
         }
         
-        // Update display
+        // Update display to show hint
         this.displayQuestion();
     }
 

@@ -95,7 +95,19 @@ body {
 .topic-card.selected {
   border-color: #667eea;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  transform: translateY(-3px);
+}
+
+.topic-card.selected h3 {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.topic-card.selected p {
+  color: #f0f0f0;
+  opacity: 0.95;
 }
 
 .topic-card i {
@@ -222,6 +234,7 @@ body {
   max-height: none;
   height: auto;
   display: block;
+  padding: 0;
 }
 
 .question {
@@ -246,13 +259,9 @@ body {
   text-overflow: unset;
   display: block;
   flex-shrink: 0;
-  max-height: none !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  max-height: none;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid red !important;
-  background: yellow !important;
 }
 
 .question-code {
@@ -333,19 +342,49 @@ body {
 .option.selected {
   border-color: #667eea;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.option.selected .option-text {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.option.selected .option-icon {
+  color: #ffffff;
 }
 
 .option.correct {
   border-color: #28a745;
   background: #d4edda;
   color: #155724;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
+}
+
+.option.correct .option-text {
+  color: #155724;
+  font-weight: 600;
+}
+
+.option.correct .option-icon {
+  color: #28a745;
 }
 
 .option.incorrect {
   border-color: #dc3545;
   background: #f8d7da;
   color: #721c24;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+}
+
+.option.incorrect .option-text {
+  color: #721c24;
+  font-weight: 600;
+}
+
+.option.incorrect .option-icon {
+  color: #dc3545;
 }
 
 .option-icon {
@@ -357,22 +396,22 @@ body {
 
 .quiz-controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 8px;
 }
 
 .btn {
-  padding: 12px 25px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .btn:disabled {
@@ -553,11 +592,62 @@ body {
   }
 
   .quiz-controls {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
   }
 
   .action-buttons {
     flex-direction: column;
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+  }
+
+  .option {
+    padding: 12px 15px;
+  }
+
+  .option-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-screen {
+    padding: 30px 15px;
+  }
+
+  .quiz-screen {
+    padding: 15px;
+  }
+
+  .question-text {
+    font-size: 1rem;
+  }
+
+  .option {
+    padding: 10px 12px;
+  }
+
+  .option-text {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .quiz-controls {
+    gap: 4px;
+    flex-wrap: wrap;
   }
 }
 
@@ -585,4 +675,57 @@ body {
 
 .option:hover::before {
   left: 100%;
+}
+
+/* Hint Section Styles */
+.hint-section {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid;
+  animation: slideIn 0.3s ease-out;
+}
+
+.hint-section.correct {
+  background: #d4edda;
+  border-left-color: #28a745;
+  color: #155724;
+}
+
+.hint-section.incorrect {
+  background: #f8d7da;
+  border-left-color: #dc3545;
+  color: #721c24;
+}
+
+.hint-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.hint-content p {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.hint-note {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
