@@ -2,6 +2,67 @@ const quizData = {
     dom: [
         {
             id: 1,
+            question: "Given the XML:\n<country name=\"Algeria\" capital=\"Algiers\" population=\"33,333,216\" />\nWhich method returns the value \"Algeria\"?",
+            code: "<country name=\"Algeria\" capital=\"Algiers\" population=\"33,333,216\" />",
+            options: [
+                "countryAttributes.NextSibling.InnerText",
+                "countryAttributes.GetNamedItem(\"name\").InnerText",
+                "countryAttributes.InnerText(0)",
+                "countryAttributes.FirstChild.InnerText"
+            ],
+            correct: 1,
+            explanation: "GetNamedItem(\"name\") retrieves the name attribute, and InnerText gets its value \"Algeria\"."
+        },
+        {
+            id: 2,
+            question: "Which one of the following properties of the node interface (XmlNode in .NET) is a NodeList (XmlNodeList in .NET)?",
+            options: [
+                "ChildNodes",
+                "Attributes",
+                "nextSibling",
+                "FirstChild"
+            ],
+            correct: 0,
+            explanation: "The ChildNodes property returns a NodeList (XmlNodeList in .NET), which is a collection of child nodes."
+        },
+        {
+            id: 3,
+            question: "Which one of the following interfaces in .NET is a specialized version of the DOM interface NamedNodeMap?",
+            options: [
+                "XmlAttributeCollection",
+                "XmlNodeReader",
+                "XmlDocument",
+                "XmlNodeList"
+            ],
+            correct: 0,
+            explanation: "XmlAttributeCollection is the .NET implementation of the NamedNodeMap interface for attributes."
+        },
+        {
+            id: 4,
+            question: "In the DOM, a NodeList interface (XmlNodeList in .NET) can reference:",
+            options: [
+                "A collection of elements",
+                "An element",
+                "An attribute",
+                "The simple content (value) of an element"
+            ],
+            correct: 0,
+            explanation: "A NodeList interface represents a collection of nodes, typically a collection of elements."
+        },
+        {
+            id: 5,
+            question: "In the tutorial on DOM interfaces, what method was used to obtain a collection of all the country elements in the XML data?",
+            options: [
+                "GetElementsByTagName() method",
+                "GetElementById() method",
+                "GetNamedItem() method",
+                "ChildNodes property"
+            ],
+            correct: 0,
+            explanation: "GetElementsByTagName() method is used to obtain a collection of all elements with a specific tag name."
+        },
+        {
+            id: 6,
             question: "Given a node interface (type XmlNode in .NET), what type is the interface's ChildNodes property?",
             options: [
                 "NamedNodeMap (XmlNamedNodeMap)",
@@ -13,7 +74,7 @@ const quizData = {
             explanation: "The ChildNodes property returns a NodeList (XmlNodeList in .NET), which is a collection of child nodes."
         },
         {
-            id: 2,
+            id: 7,
             question: "In the DOM, a Node interface (XmlNode in .NET) can NOT reference:",
             options: [
                 "An element",
@@ -25,7 +86,7 @@ const quizData = {
             explanation: "A Node interface represents a single node in the DOM tree, not a collection of elements."
         },
         {
-            id: 3,
+            id: 8,
             question: "Given the following XML code:\n<address street=\"123 Oxford St.\" city=\"London\" province=\"Ontario\"/>\nWhich of the following method calls returns \"123 Oxford St.\"?",
             code: "<address street=\"123 Oxford St.\" city=\"London\" province=\"Ontario\"/>",
             options: [
@@ -38,7 +99,7 @@ const quizData = {
             explanation: "GetNamedItem(\"street\") retrieves the street attribute, and InnerText gets its value."
         },
         {
-            id: 4,
+            id: 9,
             question: "Which one of the following interfaces in .NET is a specialized version of the DOM interface NamedNodeMap:",
             options: [
                 "XmlDocument",
@@ -50,7 +111,7 @@ const quizData = {
             explanation: "XmlAttributeCollection is the .NET implementation of the NamedNodeMap interface for attributes."
         },
         {
-            id: 5,
+            id: 10,
             question: "In the .NET version of the DOM, if we call GetElementsByTagName(), what is the returned interface type?",
             options: [
                 "XmlNode",
@@ -63,18 +124,7 @@ const quizData = {
         }
     ],
     namespaces: [
-        {
-            id: 6,
-            question: "What is the purpose of XML namespaces?",
-            options: [
-                "To shorten XML documents",
-                "To define element types",
-                "To distinguish between elements and attributes with the same name from different XML vocabularies",
-                "To validate XML syntax"
-            ],
-            correct: 2,
-            explanation: "XML namespaces are used to distinguish between elements and attributes with the same name from different XML vocabularies, preventing naming conflicts."
-        },
+
         {
             id: 7,
             question: "Why might XML namespaces be considered cumbersome?",
@@ -493,6 +543,64 @@ const quizData = {
     xpath: [
         {
             id: 11,
+            question: "What does adding a predicate to an XPath expression do?",
+            options: [
+                "It could increase the number of nodes returned",
+                "It could change the order (in the node set)",
+                "It could change the type of nodes",
+                "It could decrease the number of nodes returned"
+            ],
+            correct: 3,
+            explanation: "Adding a predicate to an XPath expression filters the node set, typically decreasing the number of nodes returned."
+        },
+        {
+            id: 12,
+            question: "Which XPath expression returns only singer elements that contain at least one child element called song?",
+            options: [
+                "//singer[song = \"true\"]",
+                "//singer[@song = \"true\"]",
+                "//singer[song]",
+                "//singer/song"
+            ],
+            correct: 2,
+            explanation: "//singer[song] uses a predicate to select only singer elements that have at least one song child element."
+        },
+        {
+            id: 13,
+            question: "Which XPath expression returns any song with @genre=\"hip-hop\" and @length < 3?",
+            options: [
+                "//song[@genre=\"hip-hop\" | @length<3]",
+                "//song[@genre=\"hip-hop\" and @length<3]",
+                "//song[@genre=\"hip-hop\" + @length<3]",
+                "//song[@genre=\"hip-hop\" or @length<3]"
+            ],
+            correct: 1,
+            explanation: "//song[@genre=\"hip-hop\" and @length<3] uses the 'and' operator to combine two conditions in the predicate."
+        },
+        {
+            id: 14,
+            question: "True or False: An XPath predicate is required in every XPath expression.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "False. XPath predicates are optional and are used to filter node sets, but they are not required in every expression."
+        },
+        {
+            id: 15,
+            question: "Which XPath predicate returns the third song element in the node set?",
+            options: [
+                "//song[\"3\"]",
+                "//song[@position=2]",
+                "//song[2]",
+                "//song[3]"
+            ],
+            correct: 3,
+            explanation: "//song[3] uses a numeric predicate to select the third song element in the node set (1-indexed)."
+        },
+        {
+            id: 16,
             question: "What XPath expression selects all child nodes of the <book> element?",
             options: [
                 "book/*",
@@ -504,7 +612,7 @@ const quizData = {
             explanation: "/books/book/* selects all child elements of book elements that are children of the root books element."
         },
         {
-            id: 12,
+            id: 17,
             question: "Which XPath expression would retrieve all <title> elements in the document, regardless of their position?",
             options: [
                 "/books/title",
@@ -516,7 +624,7 @@ const quizData = {
             explanation: "//title uses the descendant-or-self axis to find all title elements anywhere in the document."
         },
         {
-            id: 13,
+            id: 18,
             question: "Which XPath expression retrieves the value of the id attribute of all <book> elements?",
             options: [
                 "book.id",
@@ -528,7 +636,7 @@ const quizData = {
             explanation: "/books/book/@id selects the id attribute of all book elements that are children of the root books element."
         },
         {
-            id: 14,
+            id: 19,
             question: "Which expression returns all <author> elements that are children of <authors> elements?",
             options: [
                 "//authors//author",
@@ -540,7 +648,7 @@ const quizData = {
             explanation: "//authors/author finds all authors elements anywhere in the document, then selects their direct author children."
         },
         {
-            id: 15,
+            id: 20,
             question: "Which XPath expression selects all <book> elements with an id attribute of 123?",
             options: [
                 "/books/book/@id=123",
@@ -550,6 +658,66 @@ const quizData = {
             ],
             correct: 1,
             explanation: "/books/book[@id=\"123\"] uses a predicate to filter book elements that have an id attribute with value \"123\"."
+        },
+        {
+            id: 21,
+            question: "Which one of the following methods in .NET can NOT be used to execute an XPath expression?",
+            options: [
+                "An XPathNavigator object's Evaluate() method",
+                "An XmlDocument object's Load() method",
+                "An XmlDocument object's SelectNodes() method",
+                "An XPathNavigator object's Select() method"
+            ],
+            correct: 1,
+            explanation: "An XmlDocument object's Load() method is used to load XML data into the DOM, not to execute XPath expressions."
+        },
+        {
+            id: 22,
+            question: "What is the purpose of an XPathNavigator object's Select() method?",
+            options: [
+                "To determine which XML document will be referenced by any future XPath expressions",
+                "To execute an XPath expression that returns a node set",
+                "To execute an XPath expression that returns an aggregate result",
+                "To load some XML data into the DOM"
+            ],
+            correct: 1,
+            explanation: "The Select() method executes an XPath expression and returns an XPathNodeIterator containing the matching nodes."
+        },
+        {
+            id: 23,
+            question: "What is the purpose of an XPathNavigator object's Evaluate() method?",
+            options: [
+                "To test an XPath expression for correct syntax",
+                "To execute an XPath expression that returns an aggregate result",
+                "To test some XML data for well-formedness",
+                "To execute an XPath expression that returns a node set"
+            ],
+            correct: 1,
+            explanation: "The Evaluate() method executes an XPath expression and returns an aggregate result (like count, sum, etc.) rather than a node set."
+        },
+        {
+            id: 24,
+            question: "Which loop demonstrates a correct way to process all the nodes returned via an XPathNodeIterator interface called nodeIterator?",
+            options: [
+                "while(nodeIterator.MoveNext()) { // process current node }",
+                "do { // process current node } while(nodeIterator.MoveNext());",
+                "while(true) { // process current node nodeIterator.MoveNext(); }",
+                "foreach(XmlNode node in nodeIterator) { // process current node }"
+            ],
+            correct: 0,
+            explanation: "The correct pattern is to use MoveNext() in a while loop to iterate through all nodes in the XPathNodeIterator."
+        },
+        {
+            id: 25,
+            question: "Which method in .NET can be used to execute an XPath expression that returns an XPathNodeIterator interface?",
+            options: [
+                "An XPathNavigator object's Evaluate() method",
+                "An XmlDocument object's Load() method",
+                "An XmlDocument object's SelectNodes() method",
+                "An XPathNavigator object's Select() method"
+            ],
+            correct: 3,
+            explanation: "An XPathNavigator object's Select() method executes an XPath expression and returns an XPathNodeIterator interface."
         }
     ]
 };
