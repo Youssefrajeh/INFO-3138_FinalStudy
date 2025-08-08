@@ -121,6 +121,286 @@ const quizData = {
             ],
             correct: 3,
             explanation: "GetElementsByTagName() returns an XmlNodeList containing all elements with the specified tag name."
+        },
+        {
+            id: 11,
+            question: "What does DOM stand for?",
+            options: [
+                "Document Order Model",
+                "Document Object Model",
+                "Data Object Mapping",
+                "Data Order Method"
+            ],
+            correct: 1,
+            explanation: "DOM stands for Document Object Model, which represents an XML or HTML document as a tree structure."
+        },
+        {
+            id: 12,
+            question: "What is the DOM used for in XML?",
+            options: [
+                "Rendering styles",
+                "Querying and manipulating XML as a tree",
+                "Compressing XML",
+                "Converting XML to JSON"
+            ],
+            correct: 1,
+            explanation: "The DOM is used for querying and manipulating XML documents as a hierarchical tree structure."
+        },
+        {
+            id: 13,
+            question: "What type of structure does the DOM represent an XML document as?",
+            options: [
+                "Graph",
+                "Tree",
+                "Array",
+                "Matrix"
+            ],
+            correct: 1,
+            explanation: "The DOM represents an XML document as a tree structure with nodes and hierarchical relationships."
+        },
+        {
+            id: 14,
+            question: "Which interface is used for storing and accessing multiple attributes?",
+            options: [
+                "NodeList",
+                "NamedNodeMap",
+                "DocumentType",
+                "ElementList"
+            ],
+            correct: 1,
+            explanation: "NamedNodeMap is the interface used for storing and accessing multiple attributes of an element."
+        },
+        {
+            id: 15,
+            question: "What does nodeName return?",
+            options: [
+                "Node type number",
+                "The tag name or attribute name",
+                "The text content of the node",
+                "The parent node's name"
+            ],
+            correct: 1,
+            explanation: "nodeName returns the tag name for element nodes or the attribute name for attribute nodes."
+        },
+        {
+            id: 16,
+            question: "Which method retrieves multiple elements by tag name?",
+            options: [
+                "getElementById()",
+                "getElementsByTagName()",
+                "getTagList()",
+                "findByTag()"
+            ],
+            correct: 1,
+            explanation: "getElementsByTagName() retrieves all elements with a specific tag name and returns a NodeList."
+        },
+        {
+            id: 17,
+            question: "In a NodeList, the index starts at:",
+            options: [
+                "1",
+                "0",
+                "-1",
+                "Depends on the parser"
+            ],
+            correct: 1,
+            explanation: "NodeList indexing starts at 0, like most programming language arrays."
+        },
+        {
+            id: 18,
+            question: "Which DOM object represents the entire XML document?",
+            options: [
+                "NodeList",
+                "Document",
+                "Element",
+                "RootNode"
+            ],
+            correct: 1,
+            explanation: "The Document object represents the entire XML document and serves as the root of the DOM tree."
+        },
+        {
+            id: 19,
+            question: "What does the textContent property return?",
+            options: [
+                "Only direct child text",
+                "Aggregated text of all descendants",
+                "Attribute values only",
+                "CDATA sections only"
+            ],
+            correct: 1,
+            explanation: "textContent returns the aggregated text content of all descendant nodes."
+        },
+        {
+            id: 20,
+            question: "Which DOM interface is used to represent a single XML element?",
+            options: [
+                "Document",
+                "Node",
+                "Element",
+                "NamedNodeMap"
+            ],
+            correct: 2,
+            explanation: "The Element interface represents a single XML element in the DOM tree."
+        },
+        {
+            id: 21,
+            question: "hasChildNodes() returns:",
+            options: [
+                "Number of children",
+                "Boolean value",
+                "List of children",
+                "First child node"
+            ],
+            correct: 1,
+            explanation: "hasChildNodes() returns a boolean value indicating whether the node has any child nodes."
+        },
+        {
+            id: 22,
+            question: "Which is NOT a valid DOM Node type?",
+            options: [
+                "Element",
+                "Attribute",
+                "Matrix",
+                "Text"
+            ],
+            correct: 2,
+            explanation: "Matrix is not a valid DOM Node type. Common types include Element, Attribute, Text, Document, etc."
+        },
+        {
+            id: 23,
+            question: "What does item(n) in a NodeList return if n is out of range?",
+            options: [
+                "The last node",
+                "Null",
+                "Empty string",
+                "First node"
+            ],
+            correct: 1,
+            explanation: "If the index n is out of range, item(n) returns null."
+        },
+        {
+            id: 24,
+            question: "Which DOM method removes an attribute by name?",
+            options: [
+                "removeNode()",
+                "removeItem()",
+                "removeNamedItem()",
+                "deleteAttr()"
+            ],
+            correct: 2,
+            explanation: "removeNamedItem() is the method used to remove an attribute by name from a NamedNodeMap."
+        },
+        {
+            id: 25,
+            question: "Which of the following statements about Element nodes is TRUE?",
+            options: [
+                "They cannot have attributes",
+                "They are the only node type that can have attributes",
+                "They always contain text only",
+                "They cannot have child nodes"
+            ],
+            correct: 1,
+            explanation: "Element nodes are the only node type that can have attributes in the DOM."
+        },
+        {
+            id: 26,
+            question: "The DOM can only be used for XML, not HTML.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "The DOM can be used for both XML and HTML documents. It's a platform- and language-neutral interface."
+        },
+        {
+            id: 27,
+            question: "NamedNodeMap is used to store attributes as key-value pairs.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "NamedNodeMap is used to store attributes as key-value pairs, providing access to element attributes."
+        },
+        {
+            id: 28,
+            question: "NodeList is always \"live\" in all DOM implementations.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "NodeList is not always live in all DOM implementations. Some implementations return static NodeLists."
+        },
+        {
+            id: 29,
+            question: "The parentNode property of the root element is null.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "The parentNode property of the root element is null since it has no parent."
+        },
+        {
+            id: 30,
+            question: "The nodeValue of an element node contains its text content.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "The nodeValue of an element node is null. Text content is contained in child text nodes."
+        },
+        {
+            id: 31,
+            question: "The textContent property includes text from all descendant nodes.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "The textContent property includes text from all descendant nodes, concatenated together."
+        },
+        {
+            id: 32,
+            question: "getElementsByTagName() returns a NodeList.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "getElementsByTagName() returns a NodeList containing all elements with the specified tag name."
+        },
+        {
+            id: 33,
+            question: "The DOM tree structure always starts with a Document node.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "The DOM tree structure always starts with a Document node as the root of the entire document."
+        },
+        {
+            id: 34,
+            question: "An Element node can have both attributes and child nodes.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "An Element node can have both attributes (stored in NamedNodeMap) and child nodes."
+        },
+        {
+            id: 35,
+            question: "Removing an attribute from an element requires removing the entire element.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "Removing an attribute does not require removing the entire element. Attributes can be removed individually."
         }
     ],
     namespaces: [
@@ -719,6 +999,972 @@ const quizData = {
             correct: 3,
             explanation: "An XPathNavigator object's Select() method executes an XPath expression and returns an XPathNodeIterator interface."
         }
+    ],
+    xml: [
+        {
+            id: 1,
+            question: "What does XML stand for?",
+            options: [
+                "Extended Markup Language",
+                "Extensible Markup Language",
+                "Example Markup Language",
+                "External Markup Language"
+            ],
+            correct: 1,
+            explanation: "XML stands for Extensible Markup Language, emphasizing its ability to be extended with custom tags."
+        },
+        {
+            id: 2,
+            question: "What is the main purpose of XML?",
+            options: [
+                "Styling web pages",
+                "Representing and sharing structured data",
+                "Storing images",
+                "Compressing text"
+            ],
+            correct: 1,
+            explanation: "XML's main purpose is to represent and share structured data in a format that is both human-readable and machine-readable."
+        },
+        {
+            id: 3,
+            question: "Which of the following is NOT an XML feature?",
+            options: [
+                "Extensible",
+                "Platform-independent",
+                "Uses predefined tags only",
+                "Human-readable"
+            ],
+            correct: 2,
+            explanation: "XML is extensible, meaning you can create your own tags. It does not use predefined tags only - that's a feature of HTML."
+        },
+        {
+            id: 4,
+            question: "Which of these is an example of a technology similar to XML?",
+            options: [
+                "JSON",
+                "CSS",
+                "HTML",
+                "JPEG"
+            ],
+            correct: 0,
+            explanation: "JSON (JavaScript Object Notation) is a data format similar to XML, used for data interchange."
+        },
+        {
+            id: 5,
+            question: "Which XML version introduced more flexibility in identifiers?",
+            options: [
+                "XML 1.0",
+                "XML 1.1",
+                "XML 2.0",
+                "XML 3.0"
+            ],
+            correct: 1,
+            explanation: "XML 1.1 introduced more flexibility in identifiers, allowing additional Unicode characters."
+        },
+        {
+            id: 6,
+            question: "In XML, element names:",
+            options: [
+                "Are case-insensitive",
+                "Can contain spaces",
+                "Are case-sensitive",
+                "Can start with \"xml\" in any case"
+            ],
+            correct: 2,
+            explanation: "XML element names are case-sensitive, meaning <Book> and <book> are different elements."
+        },
+        {
+            id: 7,
+            question: "Which is NOT a valid XML use case?",
+            options: [
+                "Remote procedure calls",
+                "Database serialization",
+                "Document representation",
+                "Image rendering"
+            ],
+            correct: 3,
+            explanation: "XML is not designed for image rendering. It's used for data representation, not visual rendering."
+        },
+        {
+            id: 8,
+            question: "What is a requirement for a well-formed XML document?",
+            options: [
+                "All attribute values must be numeric",
+                "Must have exactly one root element",
+                "Must include comments",
+                "Tags can overlap"
+            ],
+            correct: 1,
+            explanation: "A well-formed XML document must have exactly one root element that contains all other elements."
+        },
+        {
+            id: 9,
+            question: "Which of the following can XML NOT directly represent?",
+            options: [
+                "Nested data structures",
+                "Binary image data without encoding",
+                "Attributes for elements",
+                "Hierarchical data"
+            ],
+            correct: 1,
+            explanation: "XML cannot directly represent binary data without encoding it as text (e.g., base64)."
+        },
+        {
+            id: 10,
+            question: "Which of the following is true about XML attributes?",
+            options: [
+                "Attributes must always be numeric",
+                "Attributes can appear multiple times with the same name in an element",
+                "Attributes must be quoted",
+                "Attributes cannot contain text"
+            ],
+            correct: 2,
+            explanation: "XML attributes must be quoted, either with single or double quotes."
+        },
+        {
+            id: 11,
+            question: "Which of these statements about XML and HTML is correct?",
+            options: [
+                "XML focuses on appearance, HTML focuses on data content",
+                "HTML focuses on appearance, XML focuses on data content",
+                "Both have predefined tag sets",
+                "XML is case-insensitive, HTML is case-sensitive"
+            ],
+            correct: 1,
+            explanation: "HTML focuses on appearance and presentation, while XML focuses on data content and structure."
+        },
+        {
+            id: 12,
+            question: "Which example shows valid XML nesting?",
+            options: [
+                "<a><b></a></b>",
+                "<a><b></b></a>",
+                "<a></a><a></a> as root",
+                "<a><b></c></a>"
+            ],
+            correct: 1,
+            explanation: "Valid XML nesting requires proper opening and closing of tags in the correct order."
+        },
+        {
+            id: 13,
+            question: "Which XML feature allows it to work across platforms?",
+            options: [
+                "Binary encoding",
+                "Unicode text format",
+                "Embedded scripts",
+                "Proprietary tags"
+            ],
+            correct: 1,
+            explanation: "XML uses Unicode text format, making it platform-independent and universally readable."
+        },
+        {
+            id: 14,
+            question: "Which XML declaration is correct?",
+            options: [
+                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+                "<xml version=\"1.0\" encoding=\"UTF-8\">",
+                "<xml-declaration 1.0 UTF-8>",
+                "<?xml encoding=\"UTF-8\"?>"
+            ],
+            correct: 0,
+            explanation: "The correct XML declaration syntax is <?xml version=\"1.0\" encoding=\"UTF-8\"?>."
+        },
+        {
+            id: 15,
+            question: "What is the role of CDATA in XML?",
+            options: [
+                "Stores binary data",
+                "Allows text with reserved XML characters without parsing",
+                "Marks comments in XML",
+                "Specifies namespaces"
+            ],
+            correct: 1,
+            explanation: "CDATA sections allow text containing reserved XML characters to be included without being parsed as XML markup."
+        },
+        {
+            id: 16,
+            question: "XML is case-insensitive.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "XML is case-sensitive. Element names like <Book> and <book> are treated as different elements."
+        },
+        {
+            id: 17,
+            question: "An XML document can have multiple root elements.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "An XML document must have exactly one root element. Multiple root elements are not allowed."
+        },
+        {
+            id: 18,
+            question: "Attributes in XML must be enclosed in quotes.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "XML attributes must be enclosed in quotes, either single or double quotes."
+        },
+        {
+            id: 19,
+            question: "XML was designed to replace HTML entirely.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "XML was not designed to replace HTML. They serve different purposes - HTML for presentation, XML for data."
+        },
+        {
+            id: 20,
+            question: "XML can be used to serialize data for transfer over a network.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "XML is commonly used to serialize and transfer data over networks due to its text-based format."
+        },
+        {
+            id: 21,
+            question: "Every XML document must have a declaration at the top.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "XML declarations are optional. While recommended, they are not required for a well-formed XML document."
+        },
+        {
+            id: 22,
+            question: "XML preserves whitespace by default.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "XML preserves whitespace by default, unlike HTML which collapses multiple spaces."
+        },
+        {
+            id: 23,
+            question: "XML element names cannot start with \"xml\" in any case.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "XML element names cannot start with \"xml\" (in any case) as these are reserved for XML specifications."
+        },
+        {
+            id: 24,
+            question: "XML comments start with <!-- and end with -->.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "XML comments use the syntax <!-- comment -->, similar to HTML comments."
+        },
+        {
+            id: 25,
+            question: "An XML file can store data in binary format without encoding.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "XML is text-based and cannot directly store binary data without encoding it as text (e.g., base64)."
+        }
+    ],
+    xsd: [
+        {
+            id: 1,
+            question: "What does XSD stand for?",
+            options: [
+                "XML Schema Definition",
+                "XML Style Description",
+                "Extended Schema Document",
+                "XML Structure Data"
+            ],
+            correct: 0,
+            explanation: "XSD stands for XML Schema Definition, which is the W3C standard for defining XML document structure."
+        },
+        {
+            id: 2,
+            question: "The main purpose of an XSD is to:",
+            options: [
+                "Transform XML documents",
+                "Validate XML structure and content",
+                "Style XML documents",
+                "Query XML data"
+            ],
+            correct: 1,
+            explanation: "The main purpose of an XSD is to validate XML structure and content, ensuring documents conform to the defined schema."
+        },
+        {
+            id: 3,
+            question: "What is an \"instance\" document?",
+            options: [
+                "A schema file",
+                "An XML document validated against a schema",
+                "An XML example without a schema",
+                "A document containing multiple schemas"
+            ],
+            correct: 1,
+            explanation: "An instance document is an XML document that is validated against a schema to ensure it conforms to the defined structure."
+        },
+        {
+            id: 4,
+            question: "Which attribute is used to associate a schema without a namespace?",
+            options: [
+                "schemaLocation",
+                "noNamespaceSchemaLocation",
+                "schemaRef",
+                "noNamespace"
+            ],
+            correct: 1,
+            explanation: "noNamespaceSchemaLocation is used to associate a schema with an XML document that doesn't use namespaces."
+        },
+        {
+            id: 5,
+            question: "Which of these is NOT a primary schema component?",
+            options: [
+                "Element declarations",
+                "Simple Type definitions",
+                "Attribute declarations",
+                "Style rules"
+            ],
+            correct: 3,
+            explanation: "Style rules are not a primary schema component. XSD focuses on structure validation, not styling."
+        },
+        {
+            id: 6,
+            question: "In <xsd:element name=\"age\" type=\"xsd:int\" minOccurs=\"0\" maxOccurs=\"1\"/>, what does minOccurs=\"0\" mean?",
+            options: [
+                "Element is optional",
+                "Element must occur at least once",
+                "Element can occur unlimited times",
+                "Element is required"
+            ],
+            correct: 0,
+            explanation: "minOccurs=\"0\" means the element is optional and may or may not appear in the XML document."
+        },
+        {
+            id: 7,
+            question: "Which is a built-in primitive XSD type?",
+            options: [
+                "positiveInteger",
+                "string",
+                "NMTOKEN",
+                "unsignedLong"
+            ],
+            correct: 1,
+            explanation: "string is a built-in primitive XSD type. The others are derived types."
+        },
+        {
+            id: 8,
+            question: "Which facet restricts a string to a certain number of characters?",
+            options: [
+                "length",
+                "pattern",
+                "enumeration",
+                "maxExclusive"
+            ],
+            correct: 0,
+            explanation: "The length facet restricts a string to a specific number of characters."
+        },
+        {
+            id: 9,
+            question: "Which facet uses regular expressions for constraints?",
+            options: [
+                "pattern",
+                "enumeration",
+                "length",
+                "whitespace"
+            ],
+            correct: 0,
+            explanation: "The pattern facet uses regular expressions to define constraints on values."
+        },
+        {
+            id: 10,
+            question: "What does the enumeration facet do?",
+            options: [
+                "Limits value to a set of allowed values",
+                "Limits length of value",
+                "Converts values to integers",
+                "Removes whitespace"
+            ],
+            correct: 0,
+            explanation: "The enumeration facet limits a value to a specific set of allowed values."
+        },
+        {
+            id: 11,
+            question: "Which is an example of a user-defined simple type?",
+            options: [
+                "xsd:int",
+                "<xsd:simpleType name=\"MyType\">",
+                "positiveInteger",
+                "xsd:decimal"
+            ],
+            correct: 1,
+            explanation: "<xsd:simpleType name=\"MyType\"> is the syntax for defining a user-defined simple type in XSD."
+        },
+        {
+            id: 12,
+            question: "In XSD, what is a complex type used for?",
+            options: [
+                "Only storing text",
+                "Defining elements with child elements and/or attributes",
+                "Restricting values of a type",
+                "Creating enumerations"
+            ],
+            correct: 1,
+            explanation: "Complex types are used to define elements that can have child elements and/or attributes."
+        },
+        {
+            id: 13,
+            question: "Which facet sets both lower and upper bounds inclusive?",
+            options: [
+                "minExclusive/maxExclusive",
+                "minInclusive/maxInclusive",
+                "minLength/maxLength",
+                "pattern"
+            ],
+            correct: 1,
+            explanation: "minInclusive/maxInclusive sets both lower and upper bounds as inclusive (including the boundary values)."
+        },
+        {
+            id: 14,
+            question: "Which is NOT a whitespace facet value?",
+            options: [
+                "preserve",
+                "replace",
+                "collapse",
+                "trim"
+            ],
+            correct: 3,
+            explanation: "trim is not a valid whitespace facet value. The valid values are preserve, replace, and collapse."
+        },
+        {
+            id: 15,
+            question: "What is the base type of positiveInteger?",
+            options: [
+                "integer",
+                "decimal",
+                "nonNegativeInteger",
+                "number"
+            ],
+            correct: 2,
+            explanation: "positiveInteger is derived from nonNegativeInteger, which is the base type."
+        },
+        {
+            id: 16,
+            question: "Which facet applies only to decimal datatypes?",
+            options: [
+                "precision",
+                "pattern",
+                "enumeration",
+                "minLength"
+            ],
+            correct: 0,
+            explanation: "The precision facet applies only to decimal datatypes to control the number of decimal places."
+        },
+        {
+            id: 17,
+            question: "In the telephone number example, why are length and pattern facets combined with AND?",
+            options: [
+                "They restrict the same property",
+                "All facets except pattern/enumeration are combined with AND",
+                "Pattern overrides length",
+                "XSD requires AND for all constraints"
+            ],
+            correct: 1,
+            explanation: "All facets except pattern and enumeration are combined with AND logic in XSD."
+        },
+        {
+            id: 18,
+            question: "Which of these can be set to \"unbounded\"?",
+            options: [
+                "length facet",
+                "maxOccurs attribute",
+                "enumeration facet",
+                "precision facet"
+            ],
+            correct: 1,
+            explanation: "maxOccurs attribute can be set to \"unbounded\" to allow unlimited occurrences of an element."
+        },
+        {
+            id: 19,
+            question: "What is the default value of maxOccurs if not specified?",
+            options: [
+                "0",
+                "1",
+                "unbounded",
+                "10"
+            ],
+            correct: 1,
+            explanation: "The default value of maxOccurs is 1 if not specified."
+        },
+        {
+            id: 20,
+            question: "Which type of XSD datatype is indivisible?",
+            options: [
+                "Atomic",
+                "List",
+                "Complex",
+                "Union"
+            ],
+            correct: 0,
+            explanation: "Atomic datatypes are indivisible - they represent single values that cannot be broken down further."
+        },
+        {
+            id: 21,
+            question: "XSD is a W3C standard.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "XSD (XML Schema Definition) is indeed a W3C standard for defining XML document structure."
+        },
+        {
+            id: 22,
+            question: "An XML document can be valid without being well-formed.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "An XML document must be well-formed before it can be valid. Well-formedness is a prerequisite for validity."
+        },
+        {
+            id: 23,
+            question: "A schema can define both simple and complex types.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "A schema can define both simple types (for text-only elements) and complex types (for elements with children/attributes)."
+        },
+        {
+            id: 24,
+            question: "User-derived types must be based on primitive types only.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "User-derived types can be based on primitive types, derived types, or other user-defined types."
+        },
+        {
+            id: 25,
+            question: "The pattern facet uses SQL LIKE syntax.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "The pattern facet uses regular expression syntax, not SQL LIKE syntax."
+        },
+        {
+            id: 26,
+            question: "Enumeration facet values are case-sensitive.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "Enumeration facet values are case-sensitive - exact matches are required."
+        },
+        {
+            id: 27,
+            question: "The whitespace facet can be set to \"trim\".",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "trim is not a valid whitespace facet value. Valid values are preserve, replace, and collapse."
+        },
+        {
+            id: 28,
+            question: "A list type in XSD can contain spaces inside its values.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "A list type in XSD cannot contain spaces inside its individual values - spaces are used as separators."
+        },
+        {
+            id: 29,
+            question: "minInclusive allows the specified boundary value.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "minInclusive allows the specified boundary value to be included in the valid range."
+        },
+        {
+            id: 30,
+            question: "The precision facet applies to both decimal and string types.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "The precision facet applies only to decimal datatypes, not to string types."
+        }
+    ],
+    xslt: [
+        {
+            id: 1,
+            question: "What does XSLT stand for?",
+            options: [
+                "XML Style Language for Transformation",
+                "XML Stylesheet Transformation Language",
+                "Extensible Stylesheet Language Transformations",
+                "Extended Stylesheet Transfer Language"
+            ],
+            correct: 2,
+            explanation: "XSLT stands for Extensible Stylesheet Language Transformations, which is used to transform XML documents."
+        },
+        {
+            id: 2,
+            question: "Which organization maintains the XSLT standard?",
+            options: [
+                "ISO",
+                "W3C",
+                "IEEE",
+                "OASIS"
+            ],
+            correct: 1,
+            explanation: "The W3C (World Wide Web Consortium) maintains the XSLT standard."
+        },
+        {
+            id: 3,
+            question: "Which XSLT version was published in 2017?",
+            options: [
+                "1.0",
+                "2.0",
+                "3.0",
+                "4.0"
+            ],
+            correct: 2,
+            explanation: "XSLT 3.0 was published as a W3C Recommendation in 2017."
+        },
+        {
+            id: 4,
+            question: "The root element of an XSLT stylesheet is:",
+            options: [
+                "<stylesheet>",
+                "<xsl:stylesheet>",
+                "<xsl:template>",
+                "<xsl:transform>"
+            ],
+            correct: 1,
+            explanation: "<xsl:stylesheet> is the most common root element for XSLT stylesheets, though <xsl:transform> is also valid."
+        },
+        {
+            id: 5,
+            question: "What is the default output method for XSLT?",
+            options: [
+                "text",
+                "html",
+                "xml",
+                "json"
+            ],
+            correct: 2,
+            explanation: "The default output method for XSLT is xml."
+        },
+        {
+            id: 6,
+            question: "Which element defines transformation rules in XSLT?",
+            options: [
+                "<xsl:apply-templates>",
+                "<xsl:template>",
+                "<xsl:value-of>",
+                "<xsl:stylesheet>"
+            ],
+            correct: 1,
+            explanation: "<xsl:template> defines transformation rules in XSLT."
+        },
+        {
+            id: 7,
+            question: "The match attribute in <xsl:template> uses:",
+            options: [
+                "CSS selectors",
+                "SQL queries",
+                "XPath expressions",
+                "Regular expressions"
+            ],
+            correct: 2,
+            explanation: "The match attribute in <xsl:template> uses XPath expressions to select nodes."
+        },
+        {
+            id: 8,
+            question: "Which <xsl:template> attribute is used to call it from another template?",
+            options: [
+                "match",
+                "mode",
+                "name",
+                "priority"
+            ],
+            correct: 2,
+            explanation: "The name attribute is used to call a template from another template using <xsl:call-template>."
+        },
+        {
+            id: 9,
+            question: "If two templates match the same node, which one is chosen?",
+            options: [
+                "The first in the file",
+                "The one with the higher priority value",
+                "The one with the lower priority value",
+                "Both are applied"
+            ],
+            correct: 1,
+            explanation: "If two templates match the same node, the one with the higher priority value is chosen."
+        },
+        {
+            id: 10,
+            question: "Which attribute in <xsl:template> is used with <xsl:apply-templates> to process specific modes?",
+            options: [
+                "match",
+                "mode",
+                "name",
+                "select"
+            ],
+            correct: 1,
+            explanation: "The mode attribute is used with <xsl:apply-templates> to process specific modes."
+        },
+        {
+            id: 11,
+            question: "Which element is used to process a set of selected nodes within a template?",
+            options: [
+                "<xsl:for-each>",
+                "<xsl:choose>",
+                "<xsl:apply-templates>",
+                "<xsl:call-template>"
+            ],
+            correct: 2,
+            explanation: "<xsl:apply-templates> is used to process a set of selected nodes within a template."
+        },
+        {
+            id: 12,
+            question: "Which instruction outputs the value of a selected node?",
+            options: [
+                "<xsl:value-of>",
+                "<xsl:output>",
+                "<xsl:variable>",
+                "<xsl:param>"
+            ],
+            correct: 0,
+            explanation: "<xsl:value-of> outputs the value of a selected node."
+        },
+        {
+            id: 13,
+            question: "Which XSLT tag is used to perform conditional logic?",
+            options: [
+                "<xsl:if>",
+                "<xsl:choose>",
+                "<xsl:when>",
+                "All of the above"
+            ],
+            correct: 3,
+            explanation: "All of these XSLT tags are used to perform conditional logic: <xsl:if>, <xsl:choose>, and <xsl:when>."
+        },
+        {
+            id: 14,
+            question: "Which XSLT instruction allows shallow copying of nodes?",
+            options: [
+                "<xsl:copy>",
+                "<xsl:copy-of>",
+                "<xsl:duplicate>",
+                "<xsl:clone>"
+            ],
+            correct: 0,
+            explanation: "<xsl:copy> allows shallow copying of nodes (without children unless explicitly processed)."
+        },
+        {
+            id: 15,
+            question: "What is the difference between <xsl:copy> and <xsl:copy-of>?",
+            options: [
+                "copy duplicates text only; copy-of duplicates elements",
+                "copy duplicates element structure without children; copy-of includes children",
+                "copy includes all descendants; copy-of only attributes",
+                "copy duplicates nothing"
+            ],
+            correct: 1,
+            explanation: "<xsl:copy> duplicates element structure without children, while <xsl:copy-of> includes children."
+        },
+        {
+            id: 16,
+            question: "Which element is used for defining global constants in XSLT?",
+            options: [
+                "<xsl:const>",
+                "<xsl:variable>",
+                "<xsl:let>",
+                "<xsl:param>"
+            ],
+            correct: 1,
+            explanation: "<xsl:variable> is used for defining global constants in XSLT."
+        },
+        {
+            id: 17,
+            question: "Which statement about XSLT processing order is TRUE?",
+            options: [
+                "Templates are applied in document order",
+                "The order in the file always matters",
+                "All templates are applied, order determined by matches and priority",
+                "Only the first template is applied"
+            ],
+            correct: 2,
+            explanation: "All templates are applied, with the order determined by matches and priority."
+        },
+        {
+            id: 18,
+            question: "What happens if a node matches no template?",
+            options: [
+                "It's ignored completely",
+                "Its children are still processed (implicit recursion)",
+                "XSLT throws an error",
+                "Output method changes to text"
+            ],
+            correct: 1,
+            explanation: "If a node matches no template, its children are still processed through implicit recursion."
+        },
+        {
+            id: 19,
+            question: "What does <xsl:output method=\"html\"/> do?",
+            options: [
+                "Converts XML to HTML format in output",
+                "Embeds HTML inside XML",
+                "Converts HTML to XML",
+                "Validates HTML"
+            ],
+            correct: 0,
+            explanation: "<xsl:output method=\"html\"/> converts XML to HTML format in the output."
+        },
+        {
+            id: 20,
+            question: "In XSLT, which element is used to include another stylesheet?",
+            options: [
+                "<xsl:import>",
+                "<xsl:include>",
+                "<xsl:use>",
+                "<xsl:link>"
+            ],
+            correct: 1,
+            explanation: "<xsl:include> is used to include another stylesheet in XSLT."
+        },
+        {
+            id: 21,
+            question: "XSLT is only used for converting XML to HTML.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "XSLT can be used to transform XML to various formats including HTML, XML, text, and others."
+        },
+        {
+            id: 22,
+            question: "<xsl:template> can be both matched by pattern and called by name.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "A template can have both a match attribute (for pattern matching) and a name attribute (for calling by name)."
+        },
+        {
+            id: 23,
+            question: "<xsl:apply-templates> must always have a select attribute.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "<xsl:apply-templates> does not require a select attribute - it can process all children by default."
+        },
+        {
+            id: 24,
+            question: "The priority attribute in <xsl:template> can use negative numbers.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "The priority attribute in <xsl:template> can use negative numbers to give lower priority."
+        },
+        {
+            id: 25,
+            question: "<xsl:mode> is a valid element in XSLT 1.0.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "<xsl:mode> is not a valid element in XSLT 1.0. It's an attribute, not a standalone element."
+        },
+        {
+            id: 26,
+            question: "<xsl:choose> is similar to a switch-case structure in programming.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "<xsl:choose> is indeed similar to a switch-case structure in programming, with <xsl:when> and <xsl:otherwise>."
+        },
+        {
+            id: 27,
+            question: "<xsl:copy> includes attributes and children by default.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "<xsl:copy> copies attributes but not children by default, unless you explicitly apply templates."
+        },
+        {
+            id: 28,
+            question: "XSLT uses XPath for selecting nodes.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "XSLT uses XPath expressions for selecting nodes in the source document."
+        },
+        {
+            id: 29,
+            question: "<xsl:output> is mandatory in all stylesheets.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "<xsl:output> is not mandatory in all stylesheets - it's optional and has default behavior."
+        },
+        {
+            id: 30,
+            question: "XSLT processing can be recursive.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 0,
+            explanation: "XSLT processing can be recursive, with templates calling other templates or processing child nodes."
+        }
     ]
 };
 
@@ -726,7 +1972,10 @@ const quizData = {
 const mixedQuestions = [
     ...quizData.dom,
     ...quizData.namespaces,
-    ...quizData.xpath
+    ...quizData.xpath,
+    ...quizData.xml,
+    ...quizData.xsd,
+    ...quizData.xslt
 ];
 
 // Add mixed questions to quizData

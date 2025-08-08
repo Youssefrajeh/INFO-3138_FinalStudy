@@ -32,6 +32,7 @@ class QuizApp {
         this.nextBtn = document.getElementById('nextBtn');
         this.finishBtn = document.getElementById('finishBtn');
         this.exitBtn = document.getElementById('exitBtn');
+        this.skipBtn = document.getElementById('skipBtn');
         
         // Results screen elements
         this.finalScore = document.getElementById('finalScore');
@@ -56,6 +57,7 @@ class QuizApp {
         this.nextBtn.addEventListener('click', () => this.nextQuestion());
         this.finishBtn.addEventListener('click', () => this.finishQuiz());
         this.exitBtn.addEventListener('click', () => this.exitQuiz());
+        this.skipBtn.addEventListener('click', () => this.skipQuestion());
 
         // Results actions
         this.retakeBtn.addEventListener('click', () => this.retakeQuiz());
@@ -173,6 +175,7 @@ class QuizApp {
             const isAnswered = this.userAnswers[this.currentQuestionIndex] !== null;
             const isCorrect = index === question.correct;
             const isIncorrect = isAnswered && isSelected && !isCorrect;
+            const isSkipped = this.userAnswers[this.currentQuestionIndex] === null;
             
             let optionClass = 'option';
             if (isSelected) optionClass += ' selected';
@@ -190,7 +193,7 @@ class QuizApp {
         });
         questionHTML += '</div>';
         
-        // Add hint section if answered
+        // Add hint section if answered or skipped
         if (this.userAnswers[this.currentQuestionIndex] !== null) {
             const isCorrect = this.userAnswers[this.currentQuestionIndex] === question.correct;
             const correctAnswer = question.options[question.correct];
@@ -209,6 +212,7 @@ class QuizApp {
                 </div>
             `;
         }
+        // Removed the skipped hint section - it will only show in the review
         
         questionHTML += '</div>';
         
@@ -257,6 +261,9 @@ class QuizApp {
         // Previous button
         this.prevBtn.disabled = this.currentQuestionIndex === 0;
         
+        // Skip button - always enabled unless it's the last question
+        this.skipBtn.disabled = this.currentQuestionIndex === this.currentQuestions.length - 1;
+        
         // Next/Finish button
         const isLastQuestion = this.currentQuestionIndex === this.currentQuestions.length - 1;
         const hasAnswered = this.userAnswers[this.currentQuestionIndex] !== null;
@@ -283,6 +290,20 @@ class QuizApp {
         if (this.currentQuestionIndex < this.currentQuestions.length - 1) {
             this.currentQuestionIndex++;
             this.displayQuestion();
+        }
+    }
+
+    skipQuestion() {
+        // Mark current question as skipped (null answer)
+        this.userAnswers[this.currentQuestionIndex] = null;
+        
+        // Move to next question
+        if (this.currentQuestionIndex < this.currentQuestions.length - 1) {
+            this.currentQuestionIndex++;
+            this.displayQuestion();
+        } else {
+            // If it's the last question, show finish button
+            this.updateNavigationButtons();
         }
     }
 
@@ -329,18 +350,22 @@ class QuizApp {
         this.currentQuestions.forEach((question, index) => {
             const userAnswer = this.userAnswers[index];
             const isCorrect = userAnswer === question.correct;
-            const userAnswerText = userAnswer !== null ? question.options[userAnswer] : 'Not answered';
+            const isSkipped = userAnswer === null;
+            const userAnswerText = userAnswer !== null ? question.options[userAnswer] : 'Skipped';
             const correctAnswerText = question.options[question.correct];
             
+            let reviewItemClass = isSkipped ? 'skipped' : (isCorrect ? 'correct' : 'incorrect');
+            let reviewStatusText = isSkipped ? '⏭ Skipped' : (isCorrect ? '✓ Correct' : '✗ Incorrect');
+            
             reviewHTML += `
-                <div class="review-item ${isCorrect ? 'correct' : 'incorrect'}">
+                <div class="review-item ${reviewItemClass}">
                     <div class="review-question">Question ${index + 1}: ${this.escapeHtml(question.question)}</div>
                     <div class="review-answer">
                         <strong>Your answer:</strong> ${this.escapeHtml(userAnswerText)}<br>
                         <strong>Correct answer:</strong> ${this.escapeHtml(correctAnswerText)}
                     </div>
-                    <div class="review-status ${isCorrect ? 'correct' : 'incorrect'}">
-                        ${isCorrect ? '✓ Correct' : '✗ Incorrect'}
+                    <div class="review-status ${reviewItemClass}">
+                        ${reviewStatusText}
                     </div>
                     ${question.explanation ? `<div class="review-explanation"><strong>Explanation:</strong> ${this.escapeHtml(question.explanation)}</div>` : ''}
                 </div>

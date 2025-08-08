@@ -459,6 +459,23 @@ body {
   transform: translateY(-2px);
 }
 
+.btn-warning {
+  background-color: #ffc107;
+  color: #212529;
+  border-color: #ffc107;
+}
+
+.btn-warning:hover:not(:disabled) {
+  background-color: #e0a800;
+  transform: translateY(-1px);
+}
+
+.hint-section.skipped {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-color: #ffc107;
+}
+
 .results-screen {
   padding: 40px;
   text-align: center;
@@ -527,7 +544,11 @@ body {
 
 .review-item.incorrect {
   border-left-color: #dc3545;
-  background: #f8d7da;
+}
+
+.review-item.skipped {
+  border-left-color: #ffc107;
+  background-color: #fff3cd;
 }
 
 .review-question {
@@ -552,6 +573,10 @@ body {
 
 .review-status.incorrect {
   color: #dc3545;
+}
+
+.review-status.skipped {
+  color: #856404;
 }
 
 .action-buttons {
