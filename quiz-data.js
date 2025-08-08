@@ -891,18 +891,7 @@ const quizData = {
             correct: 2,
             explanation: "/books/book/* selects all child elements of book elements that are children of the root books element."
         },
-        {
-            id: 17,
-            question: "Which XPath expression would retrieve all <title> elements in the document, regardless of their position?",
-            options: [
-                "/books/title",
-                "/title",
-                "//title",
-                "books//title"
-            ],
-            correct: 2,
-            explanation: "//title uses the descendant-or-self axis to find all title elements anywhere in the document."
-        },
+ 
         {
             id: 18,
             question: "Which XPath expression retrieves the value of the id attribute of all <book> elements?",
