@@ -75,10 +75,14 @@
                 <option value="10" selected>10 Questions</option>
                 <option value="15">15 Questions</option>
                 <option value="20">20 Questions</option>
+                <option value="all">All Questions</option>
               </select>
             </div>
 
             <button class="start-btn" id="startBtn">Start Quiz</button>
+            <button class="view-questions-btn" id="viewQuestionsBtn">
+              <i class="fas fa-list"></i> View All Questions
+            </button>
           </div>
         </div>
 
@@ -116,6 +120,35 @@
           </div>
         </div>
 
+        <div class="questions-list-screen hidden" id="questionsListScreen">
+          <!-- Fixed back button -->
+          <button class="fixed-back-btn btn btn-secondary" id="backToHomeBtn">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+
+          <div class="questions-list-content">
+            <div class="questions-list-header">
+              <h2><i class="fas fa-list"></i> All Questions by Topic</h2>
+            </div>
+
+            <div class="topics-navigation">
+              <button class="topic-nav-btn active" data-topic="all">
+                All Topics
+              </button>
+              <button class="topic-nav-btn" data-topic="dom">DOM</button>
+              <button class="topic-nav-btn" data-topic="namespaces">
+                Namespaces
+              </button>
+              <button class="topic-nav-btn" data-topic="xpath">XPath</button>
+              <button class="topic-nav-btn" data-topic="xml">XML</button>
+              <button class="topic-nav-btn" data-topic="xsd">XSD</button>
+              <button class="topic-nav-btn" data-topic="xslt">XSLT</button>
+            </div>
+
+            <div class="questions-container" id="questionsContainer"></div>
+          </div>
+        </div>
+
         <div class="results-screen hidden" id="resultsScreen">
           <div class="results-content">
             <h2>Quiz Results</h2>
@@ -136,9 +169,7 @@
 
             <div class="review-section">
               <h3>Question Review</h3>
-              <div class="review-list" id="reviewList">
-                <!-- Review items will be inserted here -->
-              </div>
+              <div class="review-list" id="reviewList"></div>
             </div>
 
             <div class="action-buttons">
@@ -153,6 +184,10 @@
         </div>
       </div>
     </div>
+
+    <footer class="footer">
+      <p>&copy; 2025 Youssef Rajeh. All rights reserved.</p>
+    </footer>
 
     <script src="quiz-data.js"></script>
     <script src="app.js"></script>

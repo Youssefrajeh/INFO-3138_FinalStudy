@@ -1957,7 +1957,7 @@ const quizData = {
     ]
 };
 
-// Create mixed questions by combining all topics
+
 const mixedQuestions = [
     ...quizData.dom,
     ...quizData.namespaces,
@@ -1967,10 +1967,10 @@ const mixedQuestions = [
     ...quizData.xslt
 ];
 
-// Add mixed questions to quizData
+
 quizData.mixed = mixedQuestions;
 
-// Export for use in app.js
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = quizData;
 } 

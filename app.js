@@ -13,17 +13,19 @@ class QuizApp {
     }
 
     initializeElements() {
-        // Screens
+
         this.welcomeScreen = document.getElementById('welcomeScreen');
         this.quizScreen = document.getElementById('quizScreen');
         this.resultsScreen = document.getElementById('resultsScreen');
+        this.questionsListScreen = document.getElementById('questionsListScreen');
         
-        // Welcome screen elements
+
         this.topicCards = document.querySelectorAll('.topic-card');
         this.questionCountSelect = document.getElementById('questionCount');
         this.startBtn = document.getElementById('startBtn');
+        this.viewQuestionsBtn = document.getElementById('viewQuestionsBtn');
         
-        // Quiz screen elements
+
         this.progressFill = document.getElementById('progressFill');
         this.questionCounter = document.getElementById('questionCounter');
         this.scoreElement = document.getElementById('score');
@@ -34,47 +36,61 @@ class QuizApp {
         this.exitBtn = document.getElementById('exitBtn');
         this.skipBtn = document.getElementById('skipBtn');
         
-        // Results screen elements
+
         this.finalScore = document.getElementById('finalScore');
         this.percentage = document.getElementById('percentage');
         this.grade = document.getElementById('grade');
         this.reviewList = document.getElementById('reviewList');
         this.retakeBtn = document.getElementById('retakeBtn');
         this.homeBtn = document.getElementById('homeBtn');
+        
+
+        this.questionsContainer = document.getElementById('questionsContainer');
+        this.backToHomeBtn = document.getElementById('backToHomeBtn');
+        this.topicNavBtns = document.querySelectorAll('.topic-nav-btn');
     }
 
     bindEvents() {
-        // Topic selection
+
         this.topicCards.forEach(card => {
             card.addEventListener('click', () => this.selectTopic(card));
         });
 
-        // Start quiz
-        this.startBtn.addEventListener('click', () => this.startQuiz());
 
-        // Navigation
+        this.startBtn.addEventListener('click', () => this.startQuiz());
+        
+
+        this.viewQuestionsBtn.addEventListener('click', () => this.showQuestionsListScreen());
+
+
         this.prevBtn.addEventListener('click', () => this.previousQuestion());
         this.nextBtn.addEventListener('click', () => this.nextQuestion());
         this.finishBtn.addEventListener('click', () => this.finishQuiz());
         this.exitBtn.addEventListener('click', () => this.exitQuiz());
         this.skipBtn.addEventListener('click', () => this.skipQuestion());
 
-        // Results actions
+
         this.retakeBtn.addEventListener('click', () => this.retakeQuiz());
         this.homeBtn.addEventListener('click', () => this.showWelcomeScreen());
+        
+
+        this.backToHomeBtn.addEventListener('click', () => this.showWelcomeScreen());
+        this.topicNavBtns.forEach(btn => {
+            btn.addEventListener('click', () => this.filterQuestionsByTopic(btn.dataset.topic));
+        });
     }
 
     selectTopic(card) {
-        // Remove previous selection
+
         this.topicCards.forEach(c => c.classList.remove('selected'));
         
-        // Add selection to clicked card
+
         card.classList.add('selected');
         
-        // Store selected topic
+
         this.currentTopic = card.dataset.topic;
         
-        // Enable start button
+
         this.startBtn.disabled = false;
     }
 
@@ -84,29 +100,36 @@ class QuizApp {
             return;
         }
 
-        // Get number of questions
-        this.totalQuestions = parseInt(this.questionCountSelect.value);
+
+        const questionCountValue = this.questionCountSelect.value;
         
-        // Get questions for selected topic
+
         this.currentQuestions = this.getQuestionsForTopic(this.currentTopic);
         
-        // Shuffle questions if needed
+
         if (this.currentTopic === 'mixed') {
             this.shuffleArray(this.currentQuestions);
         }
         
-        // Limit to requested number of questions
-        this.currentQuestions = this.currentQuestions.slice(0, this.totalQuestions);
+
+        if (questionCountValue === 'all') {
+
+            this.totalQuestions = this.currentQuestions.length;
+        } else {
+
+            this.totalQuestions = parseInt(questionCountValue);
+            this.currentQuestions = this.currentQuestions.slice(0, this.totalQuestions);
+        }
         
-        // Initialize quiz state
+
         this.currentQuestionIndex = 0;
         this.userAnswers = new Array(this.currentQuestions.length).fill(null);
         this.score = 0;
         
-        // Show quiz screen
+
         this.showQuizScreen();
         
-        // Display first question
+
         this.displayQuestion();
     }
 
@@ -125,8 +148,9 @@ class QuizApp {
         this.welcomeScreen.classList.remove('hidden');
         this.quizScreen.classList.add('hidden');
         this.resultsScreen.classList.add('hidden');
+        this.questionsListScreen.classList.add('hidden');
         
-        // Reset topic selection
+
         this.topicCards.forEach(c => c.classList.remove('selected'));
         this.startBtn.disabled = true;
         this.currentTopic = null;
@@ -136,39 +160,51 @@ class QuizApp {
         this.welcomeScreen.classList.add('hidden');
         this.quizScreen.classList.remove('hidden');
         this.resultsScreen.classList.add('hidden');
+        this.questionsListScreen.classList.add('hidden');
     }
 
     showResultsScreen() {
         this.welcomeScreen.classList.add('hidden');
         this.quizScreen.classList.add('hidden');
         this.resultsScreen.classList.remove('hidden');
+        this.questionsListScreen.classList.add('hidden');
+    }
+
+    showQuestionsListScreen() {
+        this.welcomeScreen.classList.add('hidden');
+        this.quizScreen.classList.add('hidden');
+        this.resultsScreen.classList.add('hidden');
+        this.questionsListScreen.classList.remove('hidden');
+        
+
+        this.displayAllQuestions('all');
     }
 
     displayQuestion() {
         const question = this.currentQuestions[this.currentQuestionIndex];
         
-        // Update progress
+
         const progress = ((this.currentQuestionIndex + 1) / this.currentQuestions.length) * 100;
         this.progressFill.style.width = `${progress}%`;
         
-        // Update question counter
+
         this.questionCounter.textContent = `Question ${this.currentQuestionIndex + 1} of ${this.currentQuestions.length}`;
         
-        // Update score
+
         this.scoreElement.textContent = `Score: ${this.score}`;
         
-        // Build question HTML
+
         let questionHTML = `
             <div class="question">
                 <div class="question-text">${question.question}</div>
         `;
         
-        // Add code block if present
+
         if (question.code) {
             questionHTML += `<div class="question-code">${this.formatXmlCode(question.code)}</div>`;
         }
         
-        // Add options
+
         questionHTML += '<div class="options">';
         question.options.forEach((option, index) => {
             const isSelected = this.userAnswers[this.currentQuestionIndex] === index;
@@ -193,7 +229,7 @@ class QuizApp {
         });
         questionHTML += '</div>';
         
-        // Add hint section if answered or skipped
+
         if (this.userAnswers[this.currentQuestionIndex] !== null) {
             const isCorrect = this.userAnswers[this.currentQuestionIndex] === question.correct;
             const correctAnswer = question.options[question.correct];
@@ -212,19 +248,19 @@ class QuizApp {
                 </div>
             `;
         }
-        // Removed the skipped hint section - it will only show in the review
+
         
         questionHTML += '</div>';
         
         this.questionContainer.innerHTML = questionHTML;
         
-        // Add click handlers to options
+
         const options = this.questionContainer.querySelectorAll('.option');
         options.forEach(option => {
             option.addEventListener('click', () => this.selectOption(parseInt(option.dataset.index)));
         });
         
-        // Update navigation buttons
+
         this.updateNavigationButtons();
     }
 
@@ -237,34 +273,34 @@ class QuizApp {
         const question = this.currentQuestions[this.currentQuestionIndex];
         const previousAnswer = this.userAnswers[this.currentQuestionIndex];
         
-        // If changing answer, update score accordingly
+
         if (previousAnswer !== null) {
-            // Remove previous answer's score
+
             if (previousAnswer === question.correct) {
                 this.score--;
             }
         }
         
-        // Set new answer
+
         this.userAnswers[this.currentQuestionIndex] = optionIndex;
         
-        // Add new answer's score
+
         if (optionIndex === question.correct) {
             this.score++;
         }
         
-        // Update display to show hint
+
         this.displayQuestion();
     }
 
     updateNavigationButtons() {
-        // Previous button
+
         this.prevBtn.disabled = this.currentQuestionIndex === 0;
         
-        // Skip button - always enabled unless it's the last question
+
         this.skipBtn.disabled = this.currentQuestionIndex === this.currentQuestions.length - 1;
         
-        // Next/Finish button
+
         const isLastQuestion = this.currentQuestionIndex === this.currentQuestions.length - 1;
         const hasAnswered = this.userAnswers[this.currentQuestionIndex] !== null;
         
@@ -294,21 +330,21 @@ class QuizApp {
     }
 
     skipQuestion() {
-        // Mark current question as skipped (null answer)
+
         this.userAnswers[this.currentQuestionIndex] = null;
         
-        // Move to next question
+
         if (this.currentQuestionIndex < this.currentQuestions.length - 1) {
             this.currentQuestionIndex++;
             this.displayQuestion();
         } else {
-            // If it's the last question, show finish button
+
             this.updateNavigationButtons();
         }
     }
 
     finishQuiz() {
-        // Check if all questions are answered
+
         const unansweredCount = this.userAnswers.filter(answer => answer === null).length;
         if (unansweredCount > 0) {
             if (!confirm(`You have ${unansweredCount} unanswered question(s). Are you sure you want to finish?`)) {
@@ -320,19 +356,19 @@ class QuizApp {
     }
 
     showResults() {
-        // Calculate results
+
         const percentage = Math.round((this.score / this.currentQuestions.length) * 100);
         const grade = this.calculateGrade(percentage);
         
-        // Update results display
+
         this.finalScore.textContent = `${this.score}/${this.currentQuestions.length}`;
         this.percentage.textContent = `${percentage}%`;
         this.grade.textContent = grade;
         
-        // Build review list
+
         this.buildReviewList();
         
-        // Show results screen
+
         this.showResultsScreen();
     }
 
@@ -380,7 +416,7 @@ class QuizApp {
     }
 
     exitQuiz() {
-        // Confirm exit
+
         if (confirm('Are you sure you want to exit the quiz? Your progress will be lost.')) {
             this.showWelcomeScreen();
         }
@@ -393,27 +429,27 @@ class QuizApp {
     }
 
     formatXmlCode(xmlString) {
-        // Add XML declaration if not present
+
         if (!xmlString.includes('<?xml')) {
             xmlString = '<?xml version="1.0" encoding="utf-8"?>\n' + xmlString;
         }
         
-        // Format and indent XML
+
         let formatted = this.formatXml(xmlString);
         
-        // Apply syntax highlighting
+
         formatted = formatted
-            // XML declaration
+
             .replace(/(&lt;\?xml)([^&]*?)(\?&gt;)/g, '<span class="xml-declaration">$1$2$3</span>')
-            // Opening tags
+
             .replace(/(&lt;\/?)([a-zA-Z][a-zA-Z0-9\-_:]*)/g, '<span class="xml-tag">$1$2</span>')
-            // Closing tags
+
             .replace(/(&lt;\/)([a-zA-Z][a-zA-Z0-9\-_:]*)(&gt;)/g, '<span class="xml-tag">$1$2$3</span>')
-            // Self-closing tags
+
             .replace(/(&lt;)([a-zA-Z][a-zA-Z0-9\-_:]*)([^&]*?)(\/&gt;)/g, '<span class="xml-tag">$1$2</span><span class="xml-attr">$3</span><span class="xml-tag">$4</span>')
-            // Attributes
+
             .replace(/([a-zA-Z][a-zA-Z0-9\-_]*=)(")([^"]*)(")/g, '<span class="xml-attr">$1</span><span class="xml-value">$2$3$4</span>')
-            // Text content (between tags)
+
             .replace(/(&gt;)([^&]*?)(&lt;)/g, '$1<span class="xml-text">$2</span>$3');
         
         return formatted;
@@ -434,9 +470,110 @@ class QuizApp {
         });
         return formatted.substring(1, formatted.length-3);
     }
+
+    displayAllQuestions(topicFilter = 'all') {
+        let questionsToShow = [];
+        
+        if (topicFilter === 'all') {
+
+            Object.keys(quizData).forEach(topic => {
+                if (topic !== 'mixed') {
+                    const topicQuestions = quizData[topic].slice(0, 20);
+                    questionsToShow.push({
+                        topic: topic,
+                        questions: topicQuestions
+                    });
+                }
+            });
+        } else {
+
+            if (quizData[topicFilter]) {
+                const topicQuestions = quizData[topicFilter].slice(0, 20);
+                questionsToShow.push({
+                    topic: topicFilter,
+                    questions: topicQuestions
+                });
+            }
+        }
+
+
+        let questionsHTML = '';
+        
+        questionsToShow.forEach(topicData => {
+            const topicDisplayName = this.getTopicDisplayName(topicData.topic);
+            
+            questionsHTML += `
+                <div class="topic-section">
+                    <h3 class="topic-title">${topicDisplayName} (${topicData.questions.length} questions)</h3>
+                    <div class="questions-grid">
+            `;
+            
+            topicData.questions.forEach((question, index) => {
+                const optionsHTML = question.options.map((option, optIndex) => {
+                    const isCorrect = optIndex === question.correct;
+                    return `
+                        <div class="question-option ${isCorrect ? 'correct-option' : ''}">
+                            <span class="option-label">${String.fromCharCode(65 + optIndex)})</span>
+                            <span class="option-text">${this.escapeHtml(option)}</span>
+                            ${isCorrect ? '<i class="fas fa-check correct-indicator"></i>' : ''}
+                        </div>
+                    `;
+                }).join('');
+
+                questionsHTML += `
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-number">Question ${index + 1}</span>
+                        </div>
+                        <div class="question-text">${this.escapeHtml(question.question)}</div>
+                        ${question.code ? `<div class="question-code">${this.formatXmlCode(question.code)}</div>` : ''}
+                        <div class="question-options">
+                            ${optionsHTML}
+                        </div>
+                        ${question.explanation ? `
+                            <div class="question-explanation">
+                                <strong>Explanation:</strong> ${this.escapeHtml(question.explanation)}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            questionsHTML += `
+                    </div>
+                </div>
+            `;
+        });
+
+        this.questionsContainer.innerHTML = questionsHTML;
+    }
+
+    filterQuestionsByTopic(topic) {
+
+        this.topicNavBtns.forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.querySelector(`[data-topic="${topic}"]`);
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+        }
+
+
+        this.displayAllQuestions(topic);
+    }
+
+    getTopicDisplayName(topic) {
+        const topicNames = {
+            'dom': 'DOM Interfaces',
+            'namespaces': 'XML Namespaces',
+            'xpath': 'XPath Expressions',
+            'xml': 'XML Basics',
+            'xsd': 'XML Schema (XSD)',
+            'xslt': 'XSLT Transformations'
+        };
+        return topicNames[topic] || topic.toUpperCase();
+    }
 }
 
-// Initialize the app when the DOM is loaded
+
 document.addEventListener('DOMContentLoaded', () => {
     new QuizApp();
 }); 
