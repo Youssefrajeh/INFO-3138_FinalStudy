@@ -987,6 +987,112 @@ const quizData = {
             ],
             correct: 3,
             explanation: "An XPathNavigator object's Select() method executes an XPath expression and returns an XPathNodeIterator interface."
+        },
+        {
+            id: 26,
+            question: "Which one of the following loops demonstrates a correct way to process all the nodes returned via an XPathNodeIterator interface called nodeIterator?",
+            options: [
+                "while(nodeIterator.MoveNext()) { // process current node }",
+                "do { // process current node } while(nodeIterator.MoveNext());",
+                "while(true) { // process current node nodeIterator.MoveNext(); }",
+                "foreach(XmlNode node in nodeIterator) { // process current node }"
+            ],
+            correct: 0,
+            explanation: "The correct pattern is to use MoveNext() in a while loop to iterate through all nodes in the XPathNodeIterator."
+        },
+        {
+            id: 27,
+            question: "Which one of the following methods in .NET can NOT be used to execute an XPath expression?",
+            options: [
+                "An XPathNavigator object's Evaluate() method",
+                "An XmlDocument object's Load() method",
+                "An XmlDocument object's SelectNodes() method",
+                "An XPathNavigator object's Select() method"
+            ],
+            correct: 1,
+            explanation: "An XmlDocument object's Load() method is used to load XML data into the DOM, not to execute XPath expressions."
+        },
+        {
+            id: 28,
+            question: "What is the purpose of an XPathNavigator object's Select() method?",
+            options: [
+                "To determine which XML document will be referenced by any future XPath expressions",
+                "To execute an XPath expression that returns a node set",
+                "To execute an XPath expression that returns an aggregate result",
+                "To load some XML data into the DOM"
+            ],
+            correct: 1,
+            explanation: "The Select() method executes an XPath expression and returns an XPathNodeIterator containing the matching nodes."
+        },
+        {
+            id: 29,
+            question: "What is the purpose of an XPathNavigator object's Evaluate() method?",
+            options: [
+                "To test an XPath expression for correct syntax",
+                "To execute an XPath expression that returns an aggregate result",
+                "To test some XML data for well-formedness",
+                "To execute an XPath expression that returns a node set"
+            ],
+            correct: 1,
+            explanation: "The Evaluate() method executes an XPath expression and returns an aggregate result (like count, sum, etc.) rather than a node set."
+        },
+        {
+            id: 30,
+            question: "Which of the following predicates (inside the square brackets) returns any song element with both a genre attribute containing the value \"hip-hop\" and a length attribute containing a value of less than 3?",
+            options: [
+                "//song[@genre=\"hip-hop\" or @length<3]",
+                "//song[@genre=\"hip-hop\" * @length<3]",
+                "//song[@genre=\"hip-hop\" and @length<3]",
+                "//song[@genre=\"hip-hop\" \\| @length<3]"
+            ],
+            correct: 2,
+            explanation: "C) //song[@genre=\"hip-hop\" and @length<3] uses the 'and' operator to require both conditions to be true."
+        },
+        {
+            id: 31,
+            question: "Which of the following best describes a possible change in behaviour of an XPath expression by adding a predicate to it?",
+            options: [
+                "It could increase the number of nodes returned",
+                "It could change the order (in the node set) in which the nodes are returned",
+                "It could decrease the number of nodes returned",
+                "It could change the type of the nodes returned"
+            ],
+            correct: 2,
+            explanation: "C) Adding a predicate typically filters nodes, which could decrease the number of nodes returned by the expression."
+        },
+        {
+            id: 32,
+            question: "Which of the following XPath expressions will return only singer elements that contain at least one child element called song?",
+            options: [
+                "//singer/song",
+                "//singer[song]",
+                "//singer[@song = \"true\"]",
+                "//singer[song = \"true\"]"
+            ],
+            correct: 1,
+            explanation: "B) //singer[song] uses a predicate to select only singer elements that have at least one song child element."
+        },
+        {
+            id: 33,
+            question: "Which of the following predicates (inside the square brackets) returns only the third song element that is in the node set of all song elements?",
+            options: [
+                "//song[3]",
+                "//song*[3]",
+                "//song[@position=2]",
+                "//song[2]"
+            ],
+            correct: 0,
+            explanation: "A) //song[3] uses a positional predicate to select the third song element in the node set."
+        },
+        {
+            id: 34,
+            question: "True or False: An XPath expression may include at most just one predicate.",
+            options: [
+                "True",
+                "False"
+            ],
+            correct: 1,
+            explanation: "False. An XPath expression can include multiple predicates, such as //song[@genre=\"rock\"][@length>3]."
         }
     ],
     xml: [
@@ -1953,6 +2059,65 @@ const quizData = {
             ],
             correct: 0,
             explanation: "XSLT processing can be recursive, with templates calling other templates or processing child nodes."
+        },
+        {
+            id: 31,
+            question: "Assuming the select attribute used in each case below successfully returns a node set, which one of the instructions will cause the XSLT style sheet to only process associate elements that are grandchildren (child elements of a child element) of the current element?",
+            options: [
+                "<xsl:apply-templates select=\"//associate\"/>",
+                "<xsl:apply-templates select=\"/manager-for/associate\"/>",
+                "<xsl:apply-templates select=\"associate\"/>",
+                "<xsl:apply-templates select=\"manager-for/associate\"/>"
+            ],
+            correct: 3,
+            explanation: "D) <xsl:apply-templates select=\"manager-for/associate\"/> will process associate elements that are grandchildren of the current element, as it looks for associate elements that are children of manager-for elements that are children of the current element."
+        },
+        {
+            id: 32,
+            question: "Choose an XSLT instruction that does NOT use XPath (as shown).",
+            options: [
+                "<xsl:value-of select=\"/@name\"/>",
+                "<xsl:template match=\"node()\"/>",
+                "<xsl:for-each select=\"/\">",
+                "<xsl:apply-templates/>"
+            ],
+            correct: 3,
+            explanation: "D) <xsl:apply-templates/> does not use XPath as it has no select attribute and processes all child elements by default."
+        },
+        {
+            id: 33,
+            question: "Which of the following XSLT templates uses a relative XPath address in its match attribute (i.e., not an absolute XPath address)?",
+            options: [
+                "<xsl:template match=\"/organization/associate\">",
+                "<xsl:template match=\"/manager-for/associate\">",
+                "<xsl:template match=\"//associate\"/>",
+                "<xsl:template match=\"associate\">"
+            ],
+            correct: 3,
+            explanation: "D) <xsl:template match=\"associate\"> uses a relative XPath address as it doesn't start with a forward slash, meaning it matches associate elements relative to the current context."
+        },
+        {
+            id: 34,
+            question: "Which of the following instructions within an XSLT template will always cause the style sheet to process the child elements of the element that the template is currently processing?",
+            options: [
+                "<xsl:apply-templates select=\"@*\"/>",
+                "<xsl:apply-templates select=\".\"/>",
+                "<xsl:apply-templates/>"
+            ],
+            correct: 2,
+            explanation: "C) <xsl:apply-templates/> without a select attribute will always process all child elements of the current element being processed."
+        },
+        {
+            id: 35,
+            question: "Which of the following XSLT templates uses an absolute XPath address in its match attribute (i.e., not a relative XPath address)?",
+            options: [
+                "<xsl:template match=\"//manager-for\">",
+                "<xsl:template match=\"/manager-for\">",
+                "<xsl:template match=\"manager-for\">",
+                "<xsl:template match=\"//manager-for/\">"
+            ],
+            correct: 1,
+            explanation: "B) <xsl:template match=\"/manager-for\"> uses an absolute XPath address as it starts with a forward slash, meaning it matches manager-for elements from the root of the document."
         }
     ]
 };
